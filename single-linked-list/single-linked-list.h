@@ -215,9 +215,11 @@ private:
     template <typename Container>
     void CopyAndSwap(Container& elements) {
         SingleLinkedList result;
+        auto insert_after_it = before_begin();
 
         for (auto it = elements.begin(); it != elements.end(); ++it) {
-            result.InsertAfter(before_begin(), *it);
+            result.InsertAfter(insert_after_it, *it);
+            ++insert_after_it;
         }
         swap(result);
     }
